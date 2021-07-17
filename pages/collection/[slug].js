@@ -11,6 +11,10 @@ const ImageWrapper = styled(Row)`
   background-color: #E3EDEA;
   padding: 10px;
   align-items: center;
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
 `;
 
 const ProductImage = styled.img`

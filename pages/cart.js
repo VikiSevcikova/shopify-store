@@ -108,7 +108,7 @@ const Cart = () => {
 
   const changeQuantity = (check, item, quantity) => {
     const reg = /^-?\d*(\.\d*)?$/;
-    if ((isNaN(quantity) && reg.test(quantity)) || quantity === '' || quantity === '-') return;
+    if ((isNaN(quantity) && !reg.test(quantity)) || quantity === '' || quantity === '-') return;
     if(quantity === 0){
       removeItemFromCart(check, item);
     }else{

@@ -10,11 +10,19 @@ const LeftBox = styled(Col)`
   background-color: #d4d2da;
   padding: 20px;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
 `;
 const RightBox = styled(Col)`
   background-color: #d4d2da;
   padding: 20px;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
 `;
 const Image = styled.img`
   width: 90%;

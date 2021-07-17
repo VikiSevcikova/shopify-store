@@ -88,13 +88,13 @@ const ProductPage = ({ product }) => {
 
   const onInputChange = (e) => {
     const { value } = e.target;
-    if ((!isNaN(value) && !reg.test(value)) && value !== '' && value !== '-') {
+    if ((!isNaN(value) && reg.test(value)) && value !== '' && value !== '-') {
       setAmount(value);
     }
   }
+  console.log(amount)
 
   const addToCart = async () => {
-    if((isNaN(amount) || reg.test(amount) || amount === '' || amount === '-')) return;
     console.log('add')
     try{
       let checkoutTemp = null;

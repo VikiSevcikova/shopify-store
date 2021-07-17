@@ -22,6 +22,10 @@ const TrendingProduct = styled(Col)`
   background-color: #E3EDEA;
   padding: 20px !important;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
 `;
 
 const ImageWrapper = styled.div`
