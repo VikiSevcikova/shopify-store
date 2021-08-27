@@ -16,7 +16,9 @@ npm run dev
 ```
 
 Specifications:
-  Next.js
-  Shopify
-  Ant Design
-  Styled Components
+<ul>
+<li>Next.js</li>
+<li>Ant Design</li>
+<li>Styled Components</li>
+<li>Shopify</li>
+</ul>
