@@ -1,7 +1,7 @@
 import {getDataFromStorage, setDataToStorage} from "utils";
 import {useEffect, useState, useContext} from "react";
 import styled from "styled-components";
-import { Typography, List, Row, Input, Col } from "antd";
+import { Typography, List, Row, Input, Col, Button } from "antd";
 import client from "shopify/shopify";
 import Paragraph from "antd/lib/skeleton/Paragraph";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -58,10 +58,10 @@ const Cart = () => {
   const {setItems} = context;
 
   const [checkout, setCheckout] = useState(null);
-
   useEffect(()=>{
     if(typeof window !== 'undefined'){
       const checkout = getDataFromStorage('checkout');
+      console.log("items");
       console.log(checkout.lineItems);
       if(checkout){
         client.checkout.fetch(checkout.id).then(response => {
@@ -72,11 +72,12 @@ const Cart = () => {
   },[]);
 
   useEffect(()=>{
-    if(checkout && checkout.lineItems) setItems(checkout.lineItems.length);
+    if(checkout && checkout.lineItems){
+      setItems(checkout.lineItems.length);
+    } 
   },[checkout]);
 
   const removeItemFromCart = async (check, item) => {
-    console.log('remove item');
     const checkoutId = check.id;
     const lineItemIdsToRemove = [
       item.id
@@ -88,7 +89,6 @@ const Cart = () => {
   }
 
   const updateCheckout = async (checkout, item, quantity) => {
-    console.log('update checkout')
     try{
       const [lineItem] = checkout.lineItems.filter(lineItem => lineItem.title === item.title);
       const checkoutId = checkout.id;
@@ -101,6 +101,7 @@ const Cart = () => {
       console.log(lineItemToUpdate, checkoutId);
       const tempCheckout = await client.checkout.updateLineItems(checkoutId, lineItemToUpdate);
       setDataToStorage('checkout', tempCheckout);
+      setCheckout(JSON.parse(JSON.stringify(tempCheckout)));
     }catch(error){
       console.error(error);
     }
@@ -162,7 +163,7 @@ const Cart = () => {
             </List.Item>
           )}
         />
-        <a href={checkout.webUrl}>Proceed to checkout</a>
+        <Button type="ghost" href={checkout.webUrl} style={{float:"right"}}>Proceed to checkout</Button>
       </>
       }
     </Container>

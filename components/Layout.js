@@ -61,7 +61,7 @@ const Layout = ({ children }) => {
         <Menu>
           <Link href="/cart">
             <Badge count={items} size="small">
-                <ShoppingCartOutlined />
+                <ShoppingCartOutlined style={{fontSize:"20px"}}/>
             </Badge>
           </Link>
         </Menu>
